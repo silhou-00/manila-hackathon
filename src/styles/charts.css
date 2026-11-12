@@ -34,8 +34,9 @@
 .gcol-plot {
     display: flex;
     align-items: flex-end;
+    flex: 1;
     width: 100%;
-    height: calc(var(--space-10) * 3.5);
+    min-height: calc(var(--space-10) * 3.5);
     border-radius: var(--radius-xs);
     background: var(--surface-muted);
 }
@@ -165,6 +166,33 @@
     color: var(--ink);
     font-variant-numeric: tabular-nums;
     font-weight: 600;
+}
+
+/* graph view fills the card height wherever the card has a set height */
+.views[data-view="graph"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.views[data-view="graph"] .view-graph {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.view-graph .gcols {
+    flex: 1;
+}
+
+.view-graph .gdonut {
+    flex: 1;
+    align-content: center;
+    justify-content: center;
+}
+
+.view-graph .gdonut-ring {
+    width: min(100%, 45cqi, calc(var(--space-10) * 7));
 }
 
 /* grow in on mount */

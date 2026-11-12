@@ -845,6 +845,34 @@
             grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
         }
 
+        /* tablet and small laptop: every card takes the full width */
+        .sub.cols {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        /* the assistant log sits alone on its tab, so it shows every step without an inner scroll */
+        .mod--runlog {
+            height: auto;
+        }
+
+        .mod--runlog .views {
+            overflow: visible;
+        }
+
+        /* on its own tab it fills the screen down to the tab bar, steps spread evenly */
+        body[data-tab="assistant"] .mod--runlog {
+            min-height: calc(100dvh - 12.5rem);
+        }
+
+        body[data-tab="assistant"] .mod--runlog .gsteps {
+            flex: 1;
+            align-content: space-evenly;
+        }
+
+        .views .view-graph .gdonut-ring {
+            width: min(100%, 35cqi, calc(var(--space-10) * 5));
+        }
+
         .panel-inner {
             padding: var(--space-5) var(--space-6) 120px;
         }
@@ -1248,38 +1276,5 @@ textarea,
         padding-left: 0;
         border-top: 1px solid var(--line);
         border-left: 0;
-    }
-
-    /* graph view fills the card height on fixed pages */
-    .is-pages .page .views[data-view="graph"] {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .is-pages .page .views[data-view="graph"] .view-graph {
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        min-height: 0;
-    }
-
-    .is-pages .page .view-graph .gcols {
-        flex: 1;
-        min-height: calc(var(--space-10) * 4);
-    }
-
-    .is-pages .page .view-graph .gcol-plot {
-        flex: 1;
-        height: auto;
-    }
-
-    .is-pages .page .view-graph .gdonut {
-        flex: 1;
-        align-content: center;
-        justify-content: center;
-    }
-
-    .is-pages .page .view-graph .gdonut-ring {
-        width: min(100%, 45cqi, calc(var(--space-10) * 7));
     }
 }
