@@ -92,7 +92,7 @@ function DraftForm({ cfg, phone, onClose, onSent }: DraftFormProps) {
                     Not now
                 </button>
                 <button type="submit" className="btn btn-primary" aria-busy={sending ? "true" : undefined}>
-                    {cfg.confirm}
+                    <span>{cfg.confirm}</span>
                     {sending ? <span className="spinner"></span> : null}
                 </button>
             </div>
