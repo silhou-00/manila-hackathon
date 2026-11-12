@@ -1,0 +1,226 @@
+/* Sign-in screen: a split card on a dark ground. The brand panel shows on the left from 768px,
+   the form sits on the right. On phones the brand panel shrinks to a short header above the form. */
+
+.signin {
+    --signin-ground: oklch(17% .03 262);
+    --signin-hero-top: oklch(30% .09 255);
+    --signin-hero-bottom: oklch(19% .05 262);
+    --signin-on-hero: oklch(98% .005 250);
+    --signin-on-hero-2: oklch(84% .02 250);
+    --signin-arc: oklch(62% .12 245 / .45);
+
+    display: grid;
+    min-height: 100dvh;
+    place-items: center;
+    padding: var(--space-4);
+    background: var(--signin-ground);
+}
+
+.signin-card {
+    display: flex;
+    width: 100%;
+    max-width: 60rem;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--radius-surface);
+    background: var(--surface);
+    box-shadow: var(--shadow-floating);
+}
+
+/* brand panel */
+.signin-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    overflow: hidden;
+    background: linear-gradient(170deg, var(--signin-hero-top), var(--signin-hero-bottom));
+    color: var(--signin-on-hero);
+}
+
+.signin-brand {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-lg);
+    font-weight: 650;
+}
+
+.signin-dot {
+    width: .5rem;
+    height: .5rem;
+    border-radius: var(--radius-pill);
+    background: currentColor;
+}
+
+.signin-pitch {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.signin-pitch-title {
+    margin: 0;
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+    font-weight: 650;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.15;
+    text-wrap: balance;
+}
+
+.signin-pitch-sub {
+    margin: 0;
+    color: var(--signin-on-hero-2);
+    font-size: var(--text-md);
+    text-wrap: balance;
+}
+
+.signin-peek {
+    display: none;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.signin-peek li {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid oklch(100% 0 0 / .18);
+    border-radius: var(--radius-pill);
+    background: oklch(100% 0 0 / .08);
+    color: var(--signin-on-hero-2);
+    font-size: var(--text-sm);
+}
+
+.signin-peek b {
+    color: var(--signin-on-hero);
+    font-weight: 650;
+}
+
+.signin-arcs {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    max-width: 26rem;
+    pointer-events: none;
+}
+
+.signin-arcs circle {
+    fill: none;
+    stroke: var(--signin-arc);
+    stroke-width: 1;
+}
+
+/* form panel */
+.signin-form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-8) var(--space-6);
+}
+
+.signin-title {
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--text-display);
+    font-weight: 650;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.15;
+}
+
+.signin-lead {
+    margin: 0 0 var(--space-4);
+    color: var(--ink-2);
+    font-size: var(--text-md);
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.signin-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--ink-3);
+}
+
+.signin-input-wrap svg {
+    position: absolute;
+    left: var(--space-4);
+    pointer-events: none;
+}
+
+.signin-input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0 var(--space-4) 0 calc(var(--space-4) * 2 + 16px);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: var(--text-base);
+}
+
+.signin-input:focus-visible {
+    border-color: var(--ink);
+    outline: 2px solid var(--line-strong);
+    outline-offset: 1px;
+}
+
+.signin-input[aria-invalid="true"] {
+    border-color: var(--danger);
+}
+
+.signin-form .btn {
+    min-height: 3rem;
+    margin-top: var(--space-2);
+    border-radius: var(--radius-pill);
+}
+
+.signin-note {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: var(--text-xs);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .signin {
+        padding: var(--space-8);
+    }
+
+    .signin-card {
+        min-height: min(36rem, calc(100dvh - var(--space-8) * 2));
+        flex-direction: row;
+    }
+
+    .signin-hero {
+        flex: 1.2 1 0;
+        justify-content: space-between;
+        padding: var(--space-10);
+    }
+
+    .signin-pitch {
+        margin: auto 0;
+    }
+
+    .signin-peek {
+        display: flex;
+    }
+
+    .signin-form-wrap {
+        flex: 1 1 0;
+        justify-content: center;
+        padding: var(--space-10);
+    }
+}

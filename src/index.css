@@ -1,0 +1,30 @@
+/* Global styles. Tailwind v4 with the MarketDeck tokens exposed through @theme, so utilities and the
+   shadcn components read the same colours, radii and fonts as the carried-over app styles. */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./styles/tokens.css";
+@import "./styles/app.css";
+@import "./styles/report.css";
+@import "./styles/charts.css";
+@import "./styles/auth.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: var(--font);
+    --color-background: var(--surface);
+    --color-foreground: var(--ink);
+    --color-muted-foreground: var(--ink-3);
+    --color-border: var(--line);
+    --color-ring: var(--ink);
+    --color-primary: var(--ink);
+    --color-primary-foreground: var(--surface);
+    --color-success: var(--success);
+    --color-danger: var(--danger);
+    --color-warning: var(--warning);
+    --color-info: var(--info);
+    --color-page: var(--page);
+    --color-sunken: var(--surface-sunken);
+    --radius-lg: var(--radius-panel);
+    --breakpoint-2xl: 120rem;
+}
